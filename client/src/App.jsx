@@ -1,22 +1,37 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [toDos, setToDos] = useState([]);
+  const [newTodo, setNewTodo] = useState('');
+  useEffect(() => {
+    fetch('http://localhost:8080/api/todos')
+      .then(res => res.json())
+      .then(data => setToDos(data.toDos));
+    console.log(toDos);
+  }, []);
+
+  const handleAddTodo = () => {
+    setToDos([
+      ...toDos,
+      { id: toDos.length + 1, title: newTodo, completed: false },
+    ]);
+    setNewTodo('');
+  };
 
   return (
-    <>
-      <div></div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount(count => count + 1)}>
-          count is {count}
-        </button>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div>
+      {toDos.map(todo => (
+        <div key={todo.id}>{todo.title}</div>
+      ))}
+      <input
+        type="text"
+        placeholder="Add a todo"
+        value={newTodo}
+        onChange={e => setNewTodo(e.target.value)}
+      />
+      <button onClick={handleAddTodo}>Add</button>
+    </div>
   );
 }
 
