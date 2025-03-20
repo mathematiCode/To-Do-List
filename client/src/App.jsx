@@ -12,25 +12,63 @@ function App() {
   }, []);
 
   const handleAddTodo = () => {
-    setToDos([
-      ...toDos,
-      { id: toDos.length + 1, title: newTodo, completed: false },
-    ]);
+    fetch('http://localhost:8080/api/todos', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ title: newTodo, completed: false }),
+    })
+      .then(res => res.json())
+      .then(data => setToDos(data.toDos));
     setNewTodo('');
   };
 
+  const handleDeleteAll = () => {
+    toDos.forEach(todo => {
+      {
+        console.log('deleting', todo.id);
+        fetch(`http://localhost:8080/api/todos/${todo.id}`, {
+          method: 'DELETE',
+        });
+      }
+    });
+    fetch('http://localhost:8080/api/todos')
+      .then(res => res.json())
+      .then(data => setToDos(data.toDos));
+  };
+
+  const handleDeleteTodo = id => {
+    fetch(`http://localhost:8080/api/todos/${id}`, {
+      method: 'DELETE',
+    })
+      .then(res => res.json())
+      .then(data => setToDos(data.toDos));
+  };
+
   return (
-    <div>
+    <div className="flex flex-col gap-4 p-4">
       {toDos.map(todo => (
-        <div key={todo.id}>{todo.title}</div>
+        <div className="flex justify-between relative w-full" key={todo.id}>
+          <span> {todo.title}</span>
+          <button
+            className="relative right-0"
+            onClick={() => handleDeleteTodo(todo.id)}
+          >
+            Delete
+          </button>
+        </div>
       ))}
-      <input
-        type="text"
-        placeholder="Add a todo"
-        value={newTodo}
-        onChange={e => setNewTodo(e.target.value)}
-      />
-      <button onClick={handleAddTodo}>Add</button>
+      <div>
+        <input
+          type="text"
+          placeholder="Add a todo"
+          value={newTodo}
+          onChange={e => setNewTodo(e.target.value)}
+        />
+        <button onClick={handleAddTodo}>Add</button>
+      </div>
+      <button onClick={handleDeleteAll}>Delete All</button>
     </div>
   );
 }
