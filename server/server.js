@@ -16,8 +16,21 @@ app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
 
-app.get('/api', (req, res) => {
-  res.send('Hello World');
+const toDos = [
+  {
+    id: 1,
+    title: 'Buy groceries',
+    completed: false,
+  },
+  {
+    id: 2,
+    title: 'Do taxes',
+    completed: false,
+  },
+];
+
+app.get('/api/todos', (req, res) => {
+  res.status(201).json({ toDos });
 });
 
 app.get('/', (req, res) => {
