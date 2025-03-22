@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Switch } from 'antd';
 import './App.css';
 
 function App() {
@@ -47,29 +48,35 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col gap-4 p-4">
-      {toDos.map(todo => (
-        <div className="flex justify-between relative w-full" key={todo.id}>
-          <span> {todo.title}</span>
-          <button
-            className="relative right-0"
-            onClick={() => handleDeleteTodo(todo.id)}
-          >
-            Delete
+    <body className="w-full h-full flex justify-center items-center">
+      <Switch className="absolute top-0 right-0" />
+      <div className="flex flex-col gap-4 p-4 w-1/5">
+        {toDos.map(todo => (
+          <div className="flex justify-between relative w-full" key={todo.id}>
+            <span> {todo.title}</span>
+            <button
+              className="relative right-0"
+              onClick={() => handleDeleteTodo(todo.id)}
+            >
+              Delete
+            </button>
+          </div>
+        ))}
+        <div>
+          <input
+            type="text"
+            placeholder="Add a todo"
+            value={newTodo}
+            className="flex-1"
+            onChange={e => setNewTodo(e.target.value)}
+          />
+          <button onClick={handleAddTodo} className="relative right-0">
+            Add
           </button>
         </div>
-      ))}
-      <div>
-        <input
-          type="text"
-          placeholder="Add a todo"
-          value={newTodo}
-          onChange={e => setNewTodo(e.target.value)}
-        />
-        <button onClick={handleAddTodo}>Add</button>
+        <button onClick={handleDeleteAll}>Delete All</button>
       </div>
-      <button onClick={handleDeleteAll}>Delete All</button>
-    </div>
+    </body>
   );
 }
 
