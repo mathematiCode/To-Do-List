@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Switch } from 'antd';
+import Item from './components/item';
 import './App.css';
 
 function App() {
   const [toDos, setToDos] = useState([]);
   const [newTodo, setNewTodo] = useState('');
+  const [darkMode, setDarkMode] = useState(false);
   useEffect(() => {
     fetch('http://localhost:8080/api/todos')
       .then(res => res.json())
@@ -13,6 +15,9 @@ function App() {
   }, []);
 
   const handleAddTodo = () => {
+    if (newTodo.trim() === '') {
+      return;
+    }
     fetch('http://localhost:8080/api/todos', {
       method: 'POST',
       headers: {
@@ -26,6 +31,9 @@ function App() {
   };
 
   const handleDeleteAll = () => {
+    if (toDos.length === 0) {
+      return;
+    }
     toDos.forEach(todo => {
       {
         console.log('deleting', todo.id);
@@ -39,28 +47,16 @@ function App() {
       .then(data => setToDos(data.toDos));
   };
 
-  const handleDeleteTodo = id => {
-    fetch(`http://localhost:8080/api/todos/${id}`, {
-      method: 'DELETE',
-    })
-      .then(res => res.json())
-      .then(data => setToDos(data.toDos));
-  };
-
   return (
-    <body className="w-full h-full flex justify-center items-center">
-      <Switch className="absolute top-0 right-0" />
+    <div className="w-full h-full flex justify-center items-center">
+      <Switch
+        className="absolute top-0 right-0"
+        value={darkMode}
+        onChange={() => setDarkMode(!darkMode)}
+      />
       <div className="flex flex-col gap-4 p-4 w-1/5">
-        {toDos.map(todo => (
-          <div className="flex justify-between relative w-full" key={todo.id}>
-            <span> {todo.title}</span>
-            <button
-              className="relative right-0"
-              onClick={() => handleDeleteTodo(todo.id)}
-            >
-              Delete
-            </button>
-          </div>
+        {toDos?.map(todo => (
+          <Item key={todo.id} item={todo} setToDos={setToDos} />
         ))}
         <div>
           <input
@@ -76,7 +72,7 @@ function App() {
         </div>
         <button onClick={handleDeleteAll}>Delete All</button>
       </div>
-    </body>
+    </div>
   );
 }
 
