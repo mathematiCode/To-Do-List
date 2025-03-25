@@ -30,11 +30,11 @@ function App() {
     setNewTodo('');
   };
 
-  const handleDeleteAll = () => {
+  const handleDeleteAll = async () => {
     if (toDos.length === 0) {
       return;
     }
-    toDos.forEach(todo => {
+    await toDos.forEach(todo => {
       {
         console.log('deleting', todo.id);
         fetch(`http://localhost:8080/api/todos/${todo.id}`, {
@@ -45,34 +45,44 @@ function App() {
     fetch('http://localhost:8080/api/todos')
       .then(res => res.json())
       .then(data => setToDos(data.toDos));
+    console.log(toDos);
   };
 
   return (
-    <div className="w-full h-full flex justify-center items-center">
+    <>
+      <div className="absolute top-2 right-4 w-fit bg-red-500">
+        <Switch
+          value={darkMode}
+          onChange={() => setDarkMode(!darkMode)}
+          className="w-2"
+        />
+      </div>
       <Switch
-        className="absolute top-0 right-0"
         value={darkMode}
         onChange={() => setDarkMode(!darkMode)}
+        className="w-2 absolute top-2 right-8"
       />
-      <div className="flex flex-col gap-4 p-4 w-1/5">
-        {toDos?.map(todo => (
-          <Item key={todo.id} item={todo} setToDos={setToDos} />
-        ))}
-        <div>
-          <input
-            type="text"
-            placeholder="Add a todo"
-            value={newTodo}
-            className="flex-1"
-            onChange={e => setNewTodo(e.target.value)}
-          />
-          <button onClick={handleAddTodo} className="relative right-0">
-            Add
-          </button>
+      <div className="w-full h-full flex relative justify-center items-center">
+        <div className="flex flex-col gap-4 p-4 max-w-md">
+          {toDos?.map(todo => (
+            <Item key={todo.id} item={todo} setToDos={setToDos} />
+          ))}
+          <div>
+            <input
+              type="text"
+              placeholder="Add a todo"
+              value={newTodo}
+              className="flex-1"
+              onChange={e => setNewTodo(e.target.value)}
+            />
+            <button onClick={handleAddTodo} className="relative right-0">
+              Add
+            </button>
+          </div>
+          <button onClick={handleDeleteAll}>Delete All</button>
         </div>
-        <button onClick={handleDeleteAll}>Delete All</button>
       </div>
-    </div>
+    </>
   );
 }
 

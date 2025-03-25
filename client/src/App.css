@@ -1,12 +1,11 @@
-@import 'tailwindcss';
-
 #root {
   display: flex;
   flex-direction: column;
-  align-items: center;
+
   justify-content: center;
   height: 100vh;
   width: 100vw;
+  position: relative;
 }
 
 html {
@@ -20,9 +19,15 @@ button {
   padding: 3px 10px;
 }
 
- /* Light Theme */
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+@theme {
+  /* Light Theme */
   --background-light: hsl(0, 0%, 98%);
-  --container-light: hsl(0,0,100%);
+  --container-light: hsl(0, 0, 100%);
   --almost-white: hsl(236, 33%, 92%);
   --Light-gray: hsl(233, 11%, 84%);
   --Dark-gray-blue: hsl(236, 9%, 61%);
@@ -32,14 +37,16 @@ button {
   --background-dark: hsl(235, 21%, 11%);
   --container-dark: hsl(235, 24%, 19%);
   --text-dark: hsl(234, 39%, 85%);
-  --Light Grayish Blue (hover): hsl(236, 33%, 92%);
+  /* --Light Grayish Blue (hover): hsl(236, 33%, 92%);
   --Dark Grayish Blue: hsl(234, 11%, 52%);
   --Very Dark Grayish Blue: hsl(233, 14%, 35%);
-  --Very Dark Grayish Blue: hsl(237, 14%, 26%);
-@theme {
+  --Very Dark Grayish Blue: hsl(237, 14%, 26%); */
+
   --blue: hsl(220, 98%, 61%);
   --gradient: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
+}
 
+@theme light {
   --background: var(--background-light);
   --container: var(--container-light);
   --text: var(--text-light);
