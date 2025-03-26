@@ -13,8 +13,8 @@ function Item({ item, setToDos }) {
   };
 
   return (
-    <div className="flex justify-between relative w-full">
-      <span className="text-red-500">{item.title}</span>
+    <div className="flex justify-between relative w-full bg-peach">
+      <span className="text-peach">{item.title}</span>
       <button
         className="relative right-0"
         onClick={() => handleDeleteTodo(item.id)}

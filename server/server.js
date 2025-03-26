@@ -58,6 +58,7 @@ app.post('/api/todos', (req, res) => {
 
 app.delete('/api/todos/:id', (req, res) => {
   const { id } = req.params;
+  console.log(id, toDos.length);
   if (!id) {
     res.status(400).json({ message: 'Id is required' });
   }
