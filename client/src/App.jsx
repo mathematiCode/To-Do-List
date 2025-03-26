@@ -50,18 +50,21 @@ function App() {
 
   return (
     <>
-      <div className="absolute top-2 right-4 w-fit bg-red-500">
+      <div className="top-0 w-full h-fit flex flex-col items-end">
+        <img
+          src={
+            darkMode
+              ? './images/bg-desktop-dark.jpg'
+              : './images/bg-desktop-light.jpg'
+          }
+          className="w-full"
+        />
         <Switch
           value={darkMode}
           onChange={() => setDarkMode(!darkMode)}
-          className="w-2"
+          className="w-2 z-1 -translate-y-36"
         />
       </div>
-      <Switch
-        value={darkMode}
-        onChange={() => setDarkMode(!darkMode)}
-        className="w-2 absolute top-2 right-8"
-      />
       <div className="w-full h-full flex relative justify-center items-center">
         <div className="flex flex-col gap-4 p-4 max-w-md">
           {toDos?.map(todo => (
