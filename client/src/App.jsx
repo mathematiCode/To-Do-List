@@ -6,7 +6,12 @@ import './App.css';
 function App() {
   const [toDos, setToDos] = useState([]);
   const [newTodo, setNewTodo] = useState('');
-  const [darkMode, setDarkMode] = useState(false);
+
+  // use local storage
+  const [darkMode, setDarkMode] = useState(
+    window.matchMedia('(prefers-color-scheme: dark)').matches
+  );
+
   useEffect(() => {
     fetch('http://localhost:8080/api/todos')
       .then(res => res.json())
@@ -67,10 +72,7 @@ function App() {
       </div>
       <div className="w-full h-full flex relative justify-center items-center">
         <div className="flex flex-col gap-4 p-4 max-w-md">
-          {toDos?.map(todo => (
-            <Item key={todo.id} item={todo} setToDos={setToDos} />
-          ))}
-          <div>
+          <div className="mb-28">
             <input
               type="text"
               placeholder="Add a todo"
@@ -78,10 +80,16 @@ function App() {
               className="flex-1"
               onChange={e => setNewTodo(e.target.value)}
             />
-            <button onClick={handleAddTodo} className="relative right-0">
+            <button
+              onClick={handleAddTodo}
+              className="relative right-0 bg-peach-1 dark:bg-black"
+            >
               Add
             </button>
           </div>
+          {toDos?.map(todo => (
+            <Item key={todo.id} item={todo} setToDos={setToDos} />
+          ))}
           <button onClick={handleDeleteAll}>Delete All</button>
         </div>
       </div>
