@@ -3,6 +3,7 @@
 @tailwind utilities; */
 @import './App.css';
 @import 'tailwindcss';
+@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -19,17 +20,17 @@
 
 @theme {
   /* Light Theme */
-  --background-light: hsl(0, 0%, 98%);
-  --container-light: hsl(0, 0, 100%);
-  --almost-white: hsl(236, 33%, 92%);
-  --Light-gray: hsl(233, 11%, 84%);
-  --Dark-gray-blue: hsl(236, 9%, 61%);
+  --color-bg-light: hsl(0, 0%, 98%);
+  --color-container-light: hsl(0, 0, 100%);
+  --color-almost-white: hsl(236, 33%, 92%);
+  --color-Light-gray: hsl(233, 11%, 84%);
+  --color-Dark-gray-blue: hsl(236, 9%, 61%);
   --text-light: hsl(235, 19%, 35%);
 
   /* Dark Theme */
-  --background-dark: hsl(235, 21%, 11%);
-  --container-dark: hsl(235, 24%, 19%);
-  --text-dark: hsl(234, 39%, 85%);
+  --color-bg-dark: hsl(235, 21%, 11%);
+  --color-container-dark: hsl(235, 24%, 19%);
+  --color-text-dark: hsl(234, 39%, 85%);
   /* --Light Grayish Blue (hover): hsl(236, 33%, 92%);
   --Dark Grayish Blue: hsl(234, 11%, 52%);
   --Very Dark Grayish Blue: hsl(233, 14%, 35%);

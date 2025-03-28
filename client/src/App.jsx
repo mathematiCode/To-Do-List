@@ -13,7 +13,7 @@ function App() {
   );
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/todos')
+    fetch('https://to-do-list-backend-8utj.onrender.com/api/todos')
       .then(res => res.json())
       .then(data => setToDos(data.toDos));
     console.log(toDos);
@@ -23,7 +23,7 @@ function App() {
     if (newTodo.trim() === '') {
       return;
     }
-    fetch('http://localhost:8080/api/todos', {
+    fetch('https://to-do-list-backend-8utj.onrender.com/api/todos', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -42,12 +42,15 @@ function App() {
     await toDos.forEach(todo => {
       {
         console.log('deleting', todo.id);
-        fetch(`http://localhost:8080/api/todos/${todo.id}`, {
-          method: 'DELETE',
-        });
+        fetch(
+          `https://to-do-list-backend-8utj.onrender.com/api/todos/${todo.id}`,
+          {
+            method: 'DELETE',
+          }
+        );
       }
     });
-    fetch('http://localhost:8080/api/todos')
+    fetch('https://to-do-list-backend-8utj.onrender.com/api/todos')
       .then(res => res.json())
       .then(data => setToDos(data.toDos));
     console.log(toDos);
@@ -55,7 +58,7 @@ function App() {
 
   return (
     <>
-      <div className="top-0 w-full h-fit flex flex-col items-end">
+      <div className="top-0 w-full h-fit flex flex-col items-end ">
         <img
           src={
             darkMode
@@ -70,8 +73,8 @@ function App() {
           className="w-2 z-1 -translate-y-36"
         />
       </div>
-      <div className="w-full h-full flex relative justify-center items-center">
-        <div className="flex flex-col gap-4 p-4 max-w-md">
+      <div className="w-full h-full flex relative justify-center items-center ">
+        <div className="flex flex-col gap-4 p-10 max-w-md bg-container-light text-light dark:bg-container-dark rounded-lg shadow-lg dark:text-dark">
           <div className="mb-28">
             <input
               type="text"
@@ -80,10 +83,7 @@ function App() {
               className="flex-1"
               onChange={e => setNewTodo(e.target.value)}
             />
-            <button
-              onClick={handleAddTodo}
-              className="relative right-0 bg-peach-1 dark:bg-black"
-            >
+            <button onClick={handleAddTodo} className="relative right-0">
               Add
             </button>
           </div>
