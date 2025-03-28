@@ -24,36 +24,10 @@ body {
   height: 100vh;
 }
 
-@theme {
-  /* Light Theme */
-  --background-light: hsl(0, 0%, 98%);
-  --container-light: hsl(0, 0, 100%);
-  --almost-white: hsl(236, 33%, 92%);
-  --Light-gray: hsl(233, 11%, 84%);
-  --Dark-gray-blue: hsl(236, 9%, 61%);
-  --text-light: hsl(235, 19%, 35%);
-
-  /* Dark Theme */
-  --background-dark: hsl(235, 21%, 11%);
-  --container-dark: hsl(235, 24%, 19%);
-  --text-dark: hsl(234, 39%, 85%);
-  /* --Light Grayish Blue (hover): hsl(236, 33%, 92%);
-  --Dark Grayish Blue: hsl(234, 11%, 52%);
-  --Very Dark Grayish Blue: hsl(233, 14%, 35%);
-  --Very Dark Grayish Blue: hsl(237, 14%, 26%); */
-
-  --blue: hsl(220, 98%, 61%);
-  --gradient: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
-}
-
-@theme light {
-  --background: var(--background-light);
-  --container: var(--container-light);
-  --text: var(--text-light);
-}
-
-@theme dark {
-  --background: var(--background-dark);
-  --container: var(--container-dark);
-  --text: var(--text-dark);
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }

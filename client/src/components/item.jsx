@@ -13,8 +13,9 @@ function Item({ item, setToDos }) {
   };
 
   return (
-    <div className="flex justify-between relative w-full bg-peach">
-      <span className="text-peach">{item.title}</span>
+    <div className="flex justify-between relative w-full">
+      <input type="checkbox" className="rounded-full w-3" />
+      <span className="">{item.title}</span>
       <button
         className="relative right-0"
         onClick={() => handleDeleteTodo(item.id)}
