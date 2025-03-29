@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Switch } from 'antd';
 import Item from './components/item';
-import './App.css';
 
 function App() {
   const [toDos, setToDos] = useState([]);
@@ -86,7 +85,10 @@ function App() {
         />
       </div>
       <div className="w-full h-full flex relative justify-center items-center ">
-        <div className="flex flex-col gap-4 p-8 max-w-md bg-container-light text-light dark:bg-container-dark rounded-lg shadow-lg dark:text-dark">
+        <div
+          className="flex flex-col gap-4 p-8 max-w-md rounded-lg shadow-lg
+         bg-container-light text-text-light dark:bg-container-dark dark:text-text-dark"
+        >
           <div className="mb-28">
             <input
               type="text"
