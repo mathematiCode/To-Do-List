@@ -13,11 +13,23 @@ function App() {
   );
 
   useEffect(() => {
-    fetch('https://to-do-list-backend-8utj.onrender.com/api/todos')
-      .then(res => res.json())
-      .then(data => setToDos(data.toDos));
-    console.log(toDos);
+    try {
+      fetch('https://to-do-list-backend-8utj.onrender.com/api/todos')
+        .then(res => res.json())
+        .then(data => setToDos(data.toDos));
+      console.log(toDos);
+    } catch (error) {
+      console.error('Error fetching todos:', error);
+    }
   }, []);
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [darkMode]);
 
   const handleAddTodo = () => {
     if (newTodo.trim() === '') {
@@ -57,8 +69,8 @@ function App() {
   };
 
   return (
-    <>
-      <div className="top-0 w-full h-fit flex flex-col items-end ">
+    <div className="bg-bg-light dark:bg-bg-dark h-full">
+      <div className="top-0 w-full h-fit flex flex-col items-end">
         <img
           src={
             darkMode
@@ -74,7 +86,7 @@ function App() {
         />
       </div>
       <div className="w-full h-full flex relative justify-center items-center ">
-        <div className="flex flex-col gap-4 p-10 max-w-md bg-container-light text-light dark:bg-container-dark rounded-lg shadow-lg dark:text-dark">
+        <div className="flex flex-col gap-4 p-8 max-w-md bg-container-light text-light dark:bg-container-dark rounded-lg shadow-lg dark:text-dark">
           <div className="mb-28">
             <input
               type="text"
@@ -93,7 +105,7 @@ function App() {
           <button onClick={handleDeleteAll}>Delete All</button>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

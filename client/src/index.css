@@ -21,11 +21,11 @@
 @theme {
   /* Light Theme */
   --color-bg-light: hsl(0, 0%, 98%);
-  --color-container-light: hsl(0, 0, 100%);
+  --color-container-light: hsl(0, 0%, 100%);
   --color-almost-white: hsl(236, 33%, 92%);
   --color-Light-gray: hsl(233, 11%, 84%);
   --color-Dark-gray-blue: hsl(236, 9%, 61%);
-  --text-light: hsl(235, 19%, 35%);
+  --color-text-light: hsl(235, 19%, 35%);
 
   /* Dark Theme */
   --color-bg-dark: hsl(235, 21%, 11%);
@@ -36,13 +36,13 @@
   --Very Dark Grayish Blue: hsl(233, 14%, 35%);
   --Very Dark Grayish Blue: hsl(237, 14%, 26%); */
 
-  --blue: hsl(220, 98%, 61%);
-  --gradient: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
+  --color-blue: hsl(220, 98%, 61%);
+  --color-gradient: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
 
   --color-peach-1: hsl(340, 84%, 41%);
 }
 
-@theme light {
+/* @theme light {
   --background: var(--background-light);
   --container: var(--container-light);
   --text: var(--text-light);
@@ -52,4 +52,4 @@
   --background: var(--background-dark);
   --container: var(--container-dark);
   --text: var(--text-dark);
-}
+} */
