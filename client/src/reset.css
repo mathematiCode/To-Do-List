@@ -4,13 +4,13 @@
 
   justify-content: center;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   position: relative;
 }
 
 html {
   width: 100vw;
-  height: 100vh;
+  height: 100%;
 }
 
 button {
@@ -21,13 +21,12 @@ button {
 
 body {
   width: 100vw;
-  height: 100vh;
+  height: 100%;
 }
 
 *,
 *::before,
 *::after {
   margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }

@@ -61,15 +61,14 @@ app.delete('/api/todos/:id', (req, res) => {
   console.log(id, toDos.length);
   if (!id) {
     res.status(400).json({ message: 'Id is required' });
-  }
-  if (isNaN(id)) {
+  } else if (isNaN(id)) {
     res.status(400).json({ message: 'Id is not a number' });
-  }
-  if (id < 0) {
+  } else if (id < 0) {
     res.status(400).json({ message: 'Id is negative' });
-  }
-  if (id > toDos.length) {
+  } else if (id > toDos.length) {
     res.status(400).json({ message: 'Id is greater than the number of todos' });
+  } else {
+    res.status(400).json({ message: 'You messed up.' });
   }
   toDos = toDos.filter(todo => todo.id !== parseInt(id));
   res.status(200).json({ toDos });

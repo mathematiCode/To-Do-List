@@ -2,7 +2,7 @@ function Item({ item, setToDos }) {
   const handleDeleteTodo = id => {
     console.log('deleting', id);
     try {
-      fetch(`http://localhost:8080/api/todos/${id}`, {
+      fetch(`https://to-do-list-backend-8utj.onrender.com/api/todos/${id}`, {
         method: 'DELETE',
       })
         .then(res => res.json())
