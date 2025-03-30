@@ -13,8 +13,8 @@ function Item({ item, setToDos }) {
   };
 
   return (
-    <div className="flex justify-between relative w-full">
-      <input type="checkbox" className="rounded-full w-3" />
+    <div className="flex justify-between relative w-full items-center">
+      <input type="checkbox" className="rounded-full w-5 h-5 accent-gradient" />
       <span className="">{item.title}</span>
       <button
         className="relative right-0"
