@@ -1,3 +1,5 @@
+import { X } from 'lucide-react';
+
 function Item({ item, setToDos }) {
   const handleDeleteTodo = id => {
     console.log('deleting', id);
@@ -13,14 +15,16 @@ function Item({ item, setToDos }) {
   };
 
   return (
-    <div className="flex justify-between relative w-full items-center">
-      <input type="checkbox" className="rounded-full w-5 h-5 accent-gradient" />
-      <span className="">{item.title}</span>
+    <div className="flex justify-start gap-4 relative w-full items-center">
+      <input type="checkbox" className="checkbox" />
+      <span className="text-text-light hover:text-hover-light dark:text-text-dark hover:dark:text-hover-dark">
+        {item.title}
+      </span>
       <button
-        className="relative right-0"
+        className="ml-auto text-text-light hover:text-hover-light dark:text-text-dark hover:dark:text-hover-dark"
         onClick={() => handleDeleteTodo(item.id)}
       >
-        Delete
+        <X />
       </button>
     </div>
   );

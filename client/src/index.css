@@ -23,7 +23,7 @@
   --color-bg-light: hsl(0, 0%, 98%);
   --color-container-light: hsl(0, 0%, 100%);
   --color-almost-white: hsl(236, 33%, 92%);
-  --color-Light-gray: hsl(233, 11%, 84%);
+  --color-hover-light: hsl(233, 11%, 84%);
   --color-Dark-gray-blue: hsl(236, 9%, 61%);
   --color-text-light: hsl(235, 19%, 35%);
 
@@ -31,13 +31,13 @@
   --color-bg-dark: hsl(235, 21%, 11%);
   --color-container-dark: hsl(235, 24%, 19%);
   --color-text-dark: hsl(234, 39%, 85%);
-  /* --Light Grayish Blue (hover): hsl(236, 33%, 92%);
+  --color-hover-dark: hsl(236, 33%, 92%);
   --Dark Grayish Blue: hsl(234, 11%, 52%);
   --Very Dark Grayish Blue: hsl(233, 14%, 35%);
   --Very Dark Grayish Blue: hsl(237, 14%, 26%); */
 
   --color-blue: hsl(220, 98%, 61%);
-  --color-gradient: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
+  --gradient-gradient: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
 
   --color-peach: hsl(340, 84%, 41%);
 }
@@ -53,3 +53,5 @@
   --container: var(--container-dark);
   --text: var(--text-dark);
 } */
+
+

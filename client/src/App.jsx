@@ -90,36 +90,40 @@ function App() {
           />
         </div>
       </div>
-      <div className="w-full h-auto flex relative justify-center items-center ">
+      <div className="w-fit justify-self-center h-auto flex flex-col relative -translate-y-40 gap-4 justify-center items-center text-2xl">
         <div
-          className="flex flex-col gap-4 p-8 max-w-md rounded-lg shadow-lg -translate-y-28
-         bg-container-light text-text-light dark:bg-container-dark dark:text-text-dark justify-start"
+          className="flex justify-between items-center gap-4 px-8 py-2 rounded-lg shadow-lg w-full
+         text-text-light hover:text-hover-light dark:text-text-dark hover:dark:text-hover-dark
+         bg-container-light dark:bg-container-dark hover:dark:bg-hover-dark "
         >
-          <div className="mb-28">
-            <input
-              type="text"
-              placeholder="Add a todo"
-              value={newTodo}
-              className="flex-1"
-              onChange={e => setNewTodo(e.target.value)}
-            />
-            <button
-              onClick={handleAddTodo}
-              className="relative right-0 self-end"
-            >
-              Add
-            </button>
-          </div>
+          <input
+            type="text"
+            placeholder="Add a todo"
+            value={newTodo}
+            className="flex-1"
+            onChange={e => setNewTodo(e.target.value)}
+          />
+          <button onClick={handleAddTodo} className="relative right-0 self-end">
+            Add
+          </button>
+        </div>
+        <div
+          className="flex flex-col gap-4 p-8 rounded-lg shadow-lg w-full
+         bg-container-light dark:bg-container-dark hover:dark:bg-hover-dark justify-start"
+        >
           {toDos?.map(todo => (
             <Item key={todo.id} item={todo} setToDos={setToDos} />
           ))}
           {/* <button onClick={handleDeleteAll}>Delete All</button> */}
-          <div className="w-fit-content h-fit flex justify-center items-center text-sm">
-            <span> {toDos.length} items left</span>
+          <div
+            className="w-fit-content h-fit flex justify-center items-center text-1xl
+          text-text-light hover:text-hover-light dark:text-text-dark hover:dark:text-hover-dark "
+          >
+            <span> {toDos?.length} items left</span>
             <button> All</button>
             <button> Active</button>
             <button> Completed</button>
-            <button> Clear Completed</button>
+            <button onClick={handleDeleteAll}> Clear Completed</button>
           </div>
         </div>
       </div>
