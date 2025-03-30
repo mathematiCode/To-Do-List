@@ -69,25 +69,31 @@ function App() {
 
   return (
     <div className="bg-bg-light dark:bg-bg-dark h-full">
-      <div className="top-0 w-full h-fit flex flex-col items-end">
+      <div
+        style={{ lineHeight: '0', height: 'min-content' }}
+        className="top-0 w-full flex flex-col gap-0 items-end"
+      >
         <img
           src={
             darkMode
               ? './images/bg-desktop-dark.jpg'
               : './images/bg-desktop-light.jpg'
           }
-          className="w-full"
+          className="w-full block"
         />
-        <Switch
-          value={darkMode}
-          onChange={() => setDarkMode(!darkMode)}
-          className="w-2 z-1 -translate-y-36"
-        />
+        <div className="w-full h-fit flex justify-around items-center z-1 -translate-y-44">
+          <h1 className="text-5xl tracking-widest">TODO</h1>
+          <Switch
+            value={darkMode}
+            onChange={() => setDarkMode(!darkMode)}
+            className="w-2 "
+          />
+        </div>
       </div>
-      <div className="w-full h-full flex relative justify-center items-center ">
+      <div className="w-full h-auto flex relative justify-center items-center ">
         <div
-          className="flex flex-col gap-4 p-8 max-w-md rounded-lg shadow-lg
-         bg-container-light text-text-light dark:bg-container-dark dark:text-text-dark"
+          className="flex flex-col gap-4 p-8 max-w-md rounded-lg shadow-lg -translate-y-28
+         bg-container-light text-text-light dark:bg-container-dark dark:text-text-dark justify-start"
         >
           <div className="mb-28">
             <input
@@ -97,14 +103,24 @@ function App() {
               className="flex-1"
               onChange={e => setNewTodo(e.target.value)}
             />
-            <button onClick={handleAddTodo} className="relative right-0">
+            <button
+              onClick={handleAddTodo}
+              className="relative right-0 self-end"
+            >
               Add
             </button>
           </div>
           {toDos?.map(todo => (
             <Item key={todo.id} item={todo} setToDos={setToDos} />
           ))}
-          <button onClick={handleDeleteAll}>Delete All</button>
+          {/* <button onClick={handleDeleteAll}>Delete All</button> */}
+          <div className="w-fit-content h-fit flex justify-center items-center text-sm">
+            <span> {toDos.length} items left</span>
+            <button> All</button>
+            <button> Active</button>
+            <button> Completed</button>
+            <button> Clear Completed</button>
+          </div>
         </div>
       </div>
     </div>

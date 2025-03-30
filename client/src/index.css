@@ -39,7 +39,7 @@
   --color-blue: hsl(220, 98%, 61%);
   --color-gradient: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
 
-  --color-peach-1: hsl(340, 84%, 41%);
+  --color-peach: hsl(340, 84%, 41%);
 }
 
 /* @theme light {
