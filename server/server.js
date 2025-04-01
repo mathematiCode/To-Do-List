@@ -4,7 +4,7 @@ import express from 'express';
 import cors from 'cors';
 
 const corsOptions = {
-  origin: ['http://localhost:5173'],
+  origin: ['http://localhost:5173', 'https://toodoo-fem.netlify.app/'],
 };
 
 const app = express();
