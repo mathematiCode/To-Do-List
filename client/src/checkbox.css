@@ -1,10 +1,16 @@
 .checkbox {
   border-radius: 50%;
-  accent-color: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
+  background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
   width: 20px;
   height: 20px;
 }
 
 .checkbox:checked {
-  background-color: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
+  background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+}
+
+#test {
+  background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  width: 100px;
+  height: 100px;
 }

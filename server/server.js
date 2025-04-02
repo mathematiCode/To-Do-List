@@ -11,6 +11,13 @@ const app = express();
 app.use(cors(corsOptions));
 app.use(express.json());
 
+const middleware = (req, res, next) => {
+  console.log(req.method, req.url);
+  next();
+};
+
+app.use(middleware);
+
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
