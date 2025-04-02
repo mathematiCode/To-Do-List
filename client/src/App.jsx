@@ -14,8 +14,14 @@ function App() {
   useEffect(() => {
     try {
       fetch('https://to-do-list-backend-8utj.onrender.com/api/todos')
-        .then(res => res.json())
-        .then(data => setToDos(data.toDos));
+        .then(res => {
+          console.log(`res is`, res);
+          return res.json();
+        })
+        .then(data => {
+          console.log(`data is`, data);
+          setToDos(data.toDos);
+        });
       console.log(toDos);
     } catch (error) {
       console.error('Error fetching todos:', error);
