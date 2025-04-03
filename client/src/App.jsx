@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Switch } from 'antd';
 import Item from './components/item';
+import { Checkbox } from '@mui/material';
 
 function App() {
   const [toDos, setToDos] = useState([]);
@@ -90,11 +91,17 @@ function App() {
         />
         <div className="w-full h-fit flex justify-around items-center z-1 -translate-y-44">
           <h1 className="text-5xl tracking-widest">TODO</h1>
-          <Switch
+          {/* <Switch
             value={darkMode}
             onChange={() => setDarkMode(!darkMode)}
             className="w-2 "
-          />
+          /> */}
+          <Checkbox
+            value={darkMode}
+            onChange={() => setDarkMode(!darkMode)}
+            checkedIcon={<img src="/images/icon-sun.svg" />}
+            icon={<img src="/images/icon-moon.svg" />}
+          />{' '}
         </div>
       </div>
       <div className="w-fit justify-self-center h-auto flex flex-col relative -translate-y-40 gap-4 justify-center items-center text-2xl">
