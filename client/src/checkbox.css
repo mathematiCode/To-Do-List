@@ -1,16 +1,20 @@
 .checkbox {
   border-radius: 50%;
-  background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
   width: 20px;
   height: 20px;
+  appearance: none;
 }
 
-.checkbox:checked {
-  background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+.checkbox:checked::before {
+  width: 20px;
+  height: 20px;
+  background: image('./images/checked-gradient.svg');
 }
 
-#test {
-  background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
-  width: 100px;
-  height: 100px;
+.checkbox::before {
+  background-image: image('./images/unchecked-gradient.svg');
+}
+
+.image {
+  background-image: image('/images/unchecked-gradient.svg');
 }
