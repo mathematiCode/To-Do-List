@@ -65,20 +65,27 @@ app.post('/api/todos', (req, res) => {
 
 app.delete('/api/todos/:id', (req, res) => {
   const { id } = req.params;
+  const parsedId = parseInt(id);
   console.log(id, toDos.length);
-  if (!id) {
+  if (!parsedId) {
     res.status(400).json({ message: 'Id is required' });
-  } else if (isNaN(id)) {
+  } else if (isNaN(parsedId)) {
     res.status(400).json({ message: 'Id is not a number' });
-  } else if (id < 0) {
+  } else if (parsedId < 0) {
     res.status(400).json({ message: 'Id is negative' });
-  } else if (id > toDos.length) {
-    res.status(400).json({ message: 'Id is greater than the number of todos' });
+  } else if (parsedId > toDos.length) {
+    res.status(404).json({ message: 'Id is greater than the number of todos' });
   } else {
-    res.status(400).json({ message: 'You messed up.' });
+    const userIndex = toDos.findIndex(user => user.id === parsedId);
+    if (userIndex === -1) {
+      res.status(404).json({ message: 'User not found' });
+    } else {
+      toDos.splice(userIndex, 1);
+      res.status(200).json({ toDos });
+    }
   }
-  toDos = toDos.filter(todo => todo.id !== parseInt(id));
-  res.status(200).json({ toDos });
+  // toDos = toDos.filter(todo => todo.id !== parseInt(id));
+  //res.status(200).json({ toDos });
 });
 
 // app.deleteAll('/api/todos', (req, res) => {
