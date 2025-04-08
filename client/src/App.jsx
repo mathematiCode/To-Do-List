@@ -54,6 +54,7 @@ function App() {
     setNewTodo('');
   };
 
+  // Is there a better way to do this?
   const handleDeleteAll = async () => {
     if (toDos.length === 0) {
       return;
