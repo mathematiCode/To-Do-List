@@ -4,7 +4,6 @@ import { useState } from 'react';
 
 function Item({ item, setToDos }) {
   const [isHovered, setIsHovered] = useState(false);
-  console.log(isHovered, 'is hovered');
 
   const handleDeleteTodo = id => {
     console.log('deleting', id);

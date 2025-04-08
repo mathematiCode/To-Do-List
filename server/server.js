@@ -61,7 +61,7 @@ app.post('/api/todos', (req, res) => {
     newTodo.completed = false;
   }
   console.log(newTodo);
-  toDos.push({ ...newTodo, id: toDos.length + 1 });
+  toDos.push({ ...newTodo, id: crypto.randomUUID() });
   res.status(201).json({ toDos });
 });
 
